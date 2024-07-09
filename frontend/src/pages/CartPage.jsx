@@ -57,7 +57,7 @@ const CartPage = () => {
                 <div className="row p-2 mb-2 card flex-row">
                   <div className="col cart-image-col">
                     <img
-                      src={`https://e-backend-uqky.onrender.com/api/v1/product/product-photo/${p._id}`}
+                      src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top cart-card-img"
                       alt={p.name}
                     />

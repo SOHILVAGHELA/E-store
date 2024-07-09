@@ -9,7 +9,7 @@ export default function AdminRoute() {
   useEffect(() => {
     const authCheck = async () => {
       const res = await axios.get(
-        "https://e-backend-uqky.onrender.com/api/v1/auth/admin-auth",
+        "https://e-backend-y0rv.onrender.com/api/v1/auth/admin-auth",
         {
           headers: { Authorization: `Bearer ${auth?.token}` },
         }

@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://e-backend-uqky.onrender.com/api/v1/auth/login",
+        "https://e-backend-y0rv.onrender.com/api/v1/auth/login",
         {
           email,
           password,

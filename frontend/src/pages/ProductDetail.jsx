@@ -14,7 +14,7 @@ const ProductDatail = () => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `https://e-backend-uqky.onrender.com/api/v1/product/get-product/${params.slug}`
+        `https://e-backend-y0rv.onrender.com/api/v1/product/get-product/${params.slug}`
       );
       setProduct(data?.product);
     } catch (error) {
@@ -30,7 +30,7 @@ const ProductDatail = () => {
             <div className="row">
               <div className="col-md-4">
                 <img
-                  src={`https://e-backend-uqky.onrender.com/api/v1/product/product-photo/${product._id}`}
+                  src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${product._id}`}
                   className="w-100"
                   alt={product.name}
                 />

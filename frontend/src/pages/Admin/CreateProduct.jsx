@@ -24,7 +24,7 @@ const CreateProduct = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(
-        "https://e-backend-uqky.onrender.com/api/v1/category/get-category"
+        "https://e-backend-y0rv.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setCategories(data.category);
@@ -52,7 +52,7 @@ const CreateProduct = () => {
       productData.append("category", category);
 
       const { data } = await axios.post(
-        `https://e-backend-uqky.onrender.com/api/v1/product/create-product`,
+        `https://e-backend-y0rv.onrender.com/api/v1/product/create-product`,
         productData,
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );

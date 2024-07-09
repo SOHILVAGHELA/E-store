@@ -9,7 +9,7 @@ const Searchinput = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `https://e-backend-uqky.onrender.com/api/v1/product/search/${value.keyword}`
+        `https://e-backend-y0rv.onrender.com/api/v1/product/search/${value.keyword}`
       );
       setValue({ ...value, result: data });
       navigate("/search"); // corrected navigation path
