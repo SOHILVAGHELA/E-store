@@ -20,7 +20,7 @@ const HomePage = () => {
   const getAllProducts = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:4000/api/v1/product/get-product`
+        `https://e-backend-uqky.onrender.com/api/v1/product/get-product`
       );
 
       if (data?.success) {
@@ -36,7 +36,7 @@ const HomePage = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:4000/api/v1/category/get-category`
+        `https://e-backend-uqky.onrender.com/api/v1/category/get-category`
       );
       if (data?.success) {
         setCategories(data.category);
@@ -62,7 +62,7 @@ const HomePage = () => {
   const filterProduct = async () => {
     try {
       const { data } = await axios.post(
-        `http://localhost:4000/api/v1/product/product-filters`,
+        `https://e-backend-uqky.onrender.com/api/v1/product/product-filters`,
         { checked, radio }
       );
       setProducts(data?.products);
@@ -136,7 +136,7 @@ const HomePage = () => {
                   style={{ width: "16.65rem" }}
                 >
                   <img
-                    src={`http://localhost:4000/api/v1/product/product-photo/${p._id}`}
+                    src={`https://e-backend-uqky.onrender.com/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

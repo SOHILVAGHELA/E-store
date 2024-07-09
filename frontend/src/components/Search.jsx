@@ -21,7 +21,7 @@ const Search = () => {
                   style={{ width: "16.65rem" }}
                 >
                   <img
-                    src={`http://localhost:4000/api/v1/product/product-photo/${p._id}`}
+                    src={`https://e-backend-uqky.onrender.com/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

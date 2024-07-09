@@ -9,7 +9,7 @@ export default function PrivateRoute() {
   useEffect(() => {
     const authCheck = async () => {
       const res = await axios.get(
-        "http://localhost:4000/api/v1/auth/user-auth",
+        "https://e-backend-uqky.onrender.com/api/v1/auth/user-auth",
         {
           headers: { Authorization: `Bearer ${auth?.token}` },
         }

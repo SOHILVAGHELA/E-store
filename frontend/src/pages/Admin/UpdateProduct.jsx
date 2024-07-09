@@ -27,7 +27,7 @@ const UpdateProduct = () => {
   const getSingleProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:4000/api/v1/product/get-product/${params.slug}`
+        `https://e-backend-uqky.onrender.com/api/v1/product/get-product/${params.slug}`
       );
       setName(data.product.name);
       setId(data.product._id);
@@ -52,7 +52,7 @@ const UpdateProduct = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/category/get-category"
+        "https://e-backend-uqky.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setCategories(data.category);
@@ -76,7 +76,7 @@ const UpdateProduct = () => {
       productData.append("category", category);
 
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/product/update-product/${id}`,
+        `https://e-backend-uqky.onrender.com/api/v1/product/update-product/${id}`,
         productData,
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
@@ -99,7 +99,7 @@ const UpdateProduct = () => {
       );
       if (!answer) return;
       const { data } = await axios.delete(
-        `http://localhost:4000/api/v1/product/delete-product/${id}`
+        `https://e-backend-uqky.onrender.com/api/v1/product/delete-product/${id}`
       );
       toast.success("Product Delete Successfully");
       navigate("dashboard/admin/products");
@@ -159,7 +159,7 @@ const UpdateProduct = () => {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`http://localhost:4000/api/v1/product/product-photo/${id}`}
+                      src={`https://e-backend-uqky.onrender.com/api/v1/product/product-photo/${id}`}
                       alt="product-photo"
                       height="200px"
                       className="img img-responsive"

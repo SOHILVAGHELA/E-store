@@ -51,7 +51,7 @@ const Profile = () => {
 
     try {
       const { data } = await axios.put(
-        "http://localhost:4000/api/v1/auth/profile",
+        "https://e-backend-uqky.onrender.com/api/v1/auth/profile",
         {
           name,
           address,

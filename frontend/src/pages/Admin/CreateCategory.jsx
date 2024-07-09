@@ -20,7 +20,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/category/create-category",
+        "https://e-backend-uqky.onrender.com/api/v1/category/create-category",
         { name },
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
@@ -41,7 +41,7 @@ const CreateCategory = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/category/get-category"
+        "https://e-backend-uqky.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setCategories(data.category);
@@ -61,7 +61,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/category/update-category/${selected._id}`,
+        `https://e-backend-uqky.onrender.com/api/v1/category/update-category/${selected._id}`,
         { name: updateName },
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
@@ -83,7 +83,7 @@ const CreateCategory = () => {
   const handleDelete = async (pid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:4000/api/v1/category/delete-catergory/${pid}`,
+        `https://e-backend-uqky.onrender.com/api/v1/category/delete-catergory/${pid}`,
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
       if (data.success) {

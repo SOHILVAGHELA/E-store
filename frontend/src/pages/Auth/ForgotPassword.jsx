@@ -15,7 +15,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/auth/forget-password",
+        "https://e-backend-uqky.onrender.com/api/v1/auth/forget-password",
         {
           email,
           newPassword,
