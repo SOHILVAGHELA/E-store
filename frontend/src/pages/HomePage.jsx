@@ -128,43 +128,48 @@ const HomePage = () => {
           </div>
           <div className="col-sm">
             <h2 className="h4">All Products</h2>
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap gap-3">
               {products?.map((p) => (
-                <div
-                  key={p._id}
-                  className="card m-2"
-                  style={{ width: "16.65rem" }}
-                >
-                  <img
-                    src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
-                    alt={p.name}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{p.name}</h5>
-                    <p className="card-text">
-                      {p.description.substring(0, 30)}...
-                    </p>
-                    <p className="card-text">${p.price}</p>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
-                      See more
-                    </button>
-                    <button
-                      className="btn btn-secondary ms-2"
-                      onClick={() => {
-                        setCart([...cart, p]);
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
-                        toast.success(`Item Added to cart`);
-                      }}
-                    >
-                      ADD TO CART
-                    </button>
+                <div key={p._id}>
+                  <div
+                    key={p._id}
+                    className="card h-100"
+                    style={{ width: "16.65rem" }}
+                  >
+                    <img
+                      src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${p._id}`}
+                      className="card-img-top product-img"
+                      alt={p.name}
+                    />
+                    <div className="card-body p-2">
+                      <h5 className="card-title">{p.name}</h5>
+                      <p className="card-text small text-muted">
+                        {p.description.substring(0, 30)}...
+                      </p>
+                      <p className="card-text">${p.price}</p>
+                      <div className="d-flex justify-content-between">
+                        <button
+                          className="btn btn-sm btn-primary"
+                          onClick={() => navigate(`/product/${p.slug}`)}
+                        >
+                          See more
+                        </button>
+
+                        <button
+                          className="btn btn-sm btn-secondary"
+                          onClick={() => {
+                            setCart([...cart, p]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, p])
+                            );
+                            toast.success("Item Added to cart");
+                          }}
+                        >
+                          Add
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}

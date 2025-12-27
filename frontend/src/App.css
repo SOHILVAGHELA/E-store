@@ -1,83 +1,83 @@
 /* header section */
 .navbar {
-    font-family: "Poppins", sans-serif;
-    font-size: 17px;
-    line-height: 26px;
-    text-transform: uppercase;
-    border-bottom: 0.5px solid gray;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  line-height: 26px;
+  text-transform: uppercase;
+  border-bottom: 0.5px solid gray;
 }
 
 .nav-link {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .active {
-    border-bottom: 1px solid black !important;
+  border-bottom: 1px solid black !important;
 }
 
 .navbar-brand {
-    font-weight: 700;
-    font-family: 'roboto', sans-serif;
+  font-weight: 700;
+  font-family: "roboto", sans-serif;
 }
-
-
 
 /* footer section */
 .footer {
-    color: white;
-    
-    padding: 25px;
-    background-image: linear-gradient(to top, #18242c 0%, #1a2226 100%);
+  color: white;
+
+  padding: 25px;
+  background-image: linear-gradient(to top, #18242c 0%, #1a2226 100%);
 }
 
 .footer a {
-    text-decoration: none;
-    color: white;
-    
-    padding: 10px;
+  text-decoration: none;
+  color: white;
+
+  padding: 10px;
 }
-.footer a:hover{
-    color: #ffefba;
-    border-bottom: 1px solid #ffefba;
+.footer a:hover {
+  color: #ffefba;
+  border-bottom: 1px solid #ffefba;
 }
 /* Page Not Found section  */
 
 /* ///////////////////////////// register page */
-.registerpage   {
-      display: flex;
-      justify-content: center;
-    
-  
+.registerpage {
+  display: flex;
+  justify-content: center;
 }
-.input{
-    width: 400px;
+.input {
+  width: 400px;
 }
 
 /* ///// login page */
-.login-box{
-    max-width: 350px;
+.login-box {
+  max-width: 350px;
 }
 /* product 
  */
- .product-link{
-    text-decoration: none !important;
-    color: black !important;
- }
- 
- /* homepage filter column */
- .filter-col{
-    max-width: 300px;
- }
- .card-img-top{
-    height: 300px;
-    object-fit: cover;
-    object-position: center top;
- }
- .cart-image-col{
-    max-width: 150px;
- }
- .cart-card-img{
-    height: 150px;
-    object-fit: contain;
-    background-color: #eee;
- }
+.product-link {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+/* homepage filter column */
+.filter-col {
+  max-width: 300px;
+}
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+  object-position: center top;
+}
+.product-img {
+  height: 200px;
+  object-fit: cover;
+}
+.cart-image-col {
+  max-width: 150px;
+}
+.cart-card-img {
+  height: 150px;
+  object-fit: contain;
+  background-color: #eee;
+}
