@@ -6,6 +6,7 @@ import { Checkbox, Radio } from "antd";
 import { useCart } from "../context/Cart";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import api from "../utils/axios";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -19,8 +20,9 @@ const HomePage = () => {
   // Get all products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get(
-        `https://e-backend-y0rv.onrender.com/api/v1/product/get-product`
+      const { data } = await api.get(
+        // `https://e-backend-y0rv.onrender.com/api/v1/product/get-product`
+        `/api/v1/product/get-product`
       );
 
       if (data?.success) {

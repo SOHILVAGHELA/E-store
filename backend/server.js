@@ -16,7 +16,12 @@ connectDB();
 //rest object
 const app = express();
 //middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://e-store-5259.onrender.com"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(morgan("dev"));
 
