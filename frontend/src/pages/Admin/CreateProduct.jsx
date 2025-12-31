@@ -7,7 +7,7 @@ import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 const { Option } = Select;
-
+import api from "../../utils/api";
 const CreateProduct = () => {
   const [auth] = useAuth();
   const navigate = useNavigate();
@@ -23,9 +23,7 @@ const CreateProduct = () => {
   // Get all categories
   const getAllCategories = async () => {
     try {
-      const { data } = await axios.get(
-        "https://e-backend-y0rv.onrender.com/api/v1/category/get-category"
-      );
+      const { data } = await api.get("/api/v1/category/get-category");
       if (data?.success) {
         setCategories(data.category);
       }
@@ -51,8 +49,8 @@ const CreateProduct = () => {
       productData.append("photo", photo);
       productData.append("category", category);
 
-      const { data } = await axios.post(
-        `https://e-backend-y0rv.onrender.com/api/v1/product/create-product`,
+      const { data } = await api.post(
+        `/api/v1/product/create-product`,
         productData,
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );

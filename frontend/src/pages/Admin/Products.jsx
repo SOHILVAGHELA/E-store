@@ -4,15 +4,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-
+import api from "../../utils/api";
 const Products = () => {
   const [products, setProducts] = useState([]);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get(
-        `https://e-backend-y0rv.onrender.com/api/v1/product/get-product`
-      );
+      const { data } = await api.get(`/api/v1/product/get-product`);
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -41,7 +39,7 @@ const Products = () => {
               >
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${p._id}`}
+                    src={`API_URL/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

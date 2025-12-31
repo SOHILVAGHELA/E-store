@@ -6,7 +6,7 @@ const CartPage = () => {
   const [cart, setCart] = useCart();
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const totalPrice = () => {
     try {
       let total = 0;
@@ -57,7 +57,7 @@ const CartPage = () => {
                 <div className="row p-2 mb-2 card flex-row">
                   <div className="col cart-image-col">
                     <img
-                      src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${p._id}`}
+                      src={`${API_URL}/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top cart-card-img"
                       alt={p.name}
                     />

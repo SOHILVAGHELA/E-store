@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
-
+import api from "../../utils/api";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,13 +16,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://e-backend-y0rv.onrender.com/api/v1/auth/login",
-        {
-          email,
-          password,
-        }
-      );
+      const res = await api.post("/api/v1/auth/login", {
+        email,
+        password,
+      });
       if (res && res.data.success) {
         toast.success(res.data.message);
         setAuth({

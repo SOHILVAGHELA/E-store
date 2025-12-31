@@ -2,7 +2,7 @@ import axios from "axios";
 import Layout from "../components/Layout/Layout";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import api from "../utils/api";
 const CategoryProduct = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -10,6 +10,7 @@ const CategoryProduct = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (params?.slug) getProductsByCat();
@@ -18,8 +19,8 @@ const CategoryProduct = () => {
   const getProductsByCat = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(
-        `https://e-backend-y0rv.onrender.com/api/v1/product/product-category/${params.slug}`
+      const { data } = await api.get(
+        `/api/v1/product/product-category/${params.slug}`
       );
       setProducts(data?.products || []);
       setCategory(data?.category || {});
@@ -54,7 +55,7 @@ const CategoryProduct = () => {
                   style={{ width: "16.65rem" }}
                 >
                   <img
-                    src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${p._id}`}
+                    src={`${API_URL}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

@@ -3,6 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import api from "../../utils/api";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -14,14 +15,11 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://e-backend-y0rv.onrender.com/api/v1/auth/forget-password",
-        {
-          email,
-          newPassword,
-          answer,
-        }
-      );
+      const res = await api.post("/api/v1/auth/forget-password", {
+        email,
+        newPassword,
+        answer,
+      });
       if (res && res.data.success) {
         toast.success(res.data.message);
         navigate("/");

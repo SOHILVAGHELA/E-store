@@ -3,6 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import api from "../../utils/api";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,17 +16,14 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://e-backend-y0rv.onrender.com/api/v1/auth/register",
-        {
-          name,
-          address,
-          phone,
-          email,
-          password,
-          answer,
-        }
-      );
+      const res = await api.post("/api/v1/auth/register", {
+        name,
+        address,
+        phone,
+        email,
+        password,
+        answer,
+      });
       if (res && res.data.success) {
         toast.success(res.data.message);
         navigate("/login");

@@ -4,7 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import UserManu from "../../components/Layout/UserMenu";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
-
+import api from "../../utils/api";
 const Profile = () => {
   // Context
   const [auth, setAuth] = useAuth();
@@ -50,8 +50,8 @@ const Profile = () => {
     setIsLoading(true); // Set loading state to true
 
     try {
-      const { data } = await axios.put(
-        "https://e-backend-y0rv.onrender.com/api/v1/auth/profile",
+      const { data } = await api.put(
+        "/api/v1/auth/profile",
         {
           name,
           address,

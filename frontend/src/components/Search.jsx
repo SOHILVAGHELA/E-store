@@ -2,6 +2,7 @@ import Layout from "./Layout/Layout";
 import { useSearch } from "../context/Search";
 const Search = () => {
   const [value, setValue] = useSearch();
+  const API_URL = import.meta.env.VITE_API_URL;
   return (
     <>
       <Layout>
@@ -21,7 +22,7 @@ const Search = () => {
                   style={{ width: "16.65rem" }}
                 >
                   <img
-                    src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${p._id}`}
+                    src={`${API_URL}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

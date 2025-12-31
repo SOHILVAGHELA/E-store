@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
-import axios from "axios";
 import { Prices } from "../components/Prices";
 import { Checkbox, Radio } from "antd";
 import { useCart } from "../context/Cart";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import api from "../utils/axios";
+import api from "../utils/api";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -16,14 +15,12 @@ const HomePage = () => {
 
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // Get all products
   const getAllProducts = async () => {
     try {
-      const { data } = await api.get(
-        // `https://e-backend-y0rv.onrender.com/api/v1/product/get-product`
-        `/api/v1/product/get-product`
-      );
+      const { data } = await api.get(`/api/v1/product/get-product`);
 
       if (data?.success) {
         setProducts(data.products);
@@ -37,9 +34,7 @@ const HomePage = () => {
   // Get all categories
   const getAllCategories = async () => {
     try {
-      const { data } = await axios.get(
-        `https://e-backend-y0rv.onrender.com/api/v1/category/get-category`
-      );
+      const { data } = await api.get(`/api/v1/category/get-category`);
       if (data?.success) {
         setCategories(data.category);
       }
@@ -63,10 +58,10 @@ const HomePage = () => {
   // Get filtered products
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post(
-        `https://e-backend-y0rv.onrender.com/api/v1/product/product-filters`,
-        { checked, radio }
-      );
+      const { data } = await api.post(`/api/v1/product/product-filters`, {
+        checked,
+        radio,
+      });
       setProducts(data?.products);
     } catch (error) {
       console.log(error);
@@ -139,7 +134,7 @@ const HomePage = () => {
                     style={{ width: "16.65rem" }}
                   >
                     <img
-                      src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${p._id}`}
+                      src={`${API_URL}/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top product-img"
                       alt={p.name}
                     />

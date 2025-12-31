@@ -1,20 +1,19 @@
-import axios from "axios";
 import Layout from "../components/Layout/Layout";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import api from "../utils/api";
 const ProductDatail = () => {
   const params = useParams();
   const [product, setProduct] = useState(null);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     if (params?.slug) getProduct();
   }, [params?.slug]);
 
   const getProduct = async () => {
     try {
-      const { data } = await axios.get(
-        `https://e-backend-y0rv.onrender.com/api/v1/product/get-product/${params.slug}`
+      const { data } = await api.get(
+        `/api/v1/product/get-product/${params.slug}`
       );
       setProduct(data?.product);
     } catch (error) {
@@ -30,7 +29,7 @@ const ProductDatail = () => {
             <div className="row">
               <div className="col-md-4">
                 <img
-                  src={`https://e-backend-y0rv.onrender.com/api/v1/product/product-photo/${product._id}`}
+                  src={`${API_URL}/api/v1/product/product-photo/${product._id}`}
                   className="w-100"
                   alt={product.name}
                 />

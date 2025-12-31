@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useSearch } from "../../context/Search";
 import { useNavigate } from "react-router-dom";
+import api from "../../utils/api";
 const Searchinput = () => {
   const [value, setValue] = useSearch();
   const navigate = useNavigate();
@@ -8,9 +9,7 @@ const Searchinput = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get(
-        `https://e-backend-y0rv.onrender.com/api/v1/product/search/${value.keyword}`
-      );
+      const { data } = await api.get(`/api/v1/product/search/${value.keyword}`);
       setValue({ ...value, result: data });
       navigate("/search"); // corrected navigation path
     } catch (error) {

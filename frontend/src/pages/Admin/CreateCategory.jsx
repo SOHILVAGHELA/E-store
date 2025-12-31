@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import Layout from "../../components/Layout/Layout";
-import axios from "axios";
 import toast from "react-hot-toast";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { useAuth } from "../../context/auth";
 import { Modal } from "antd";
-
+import api from "../../utils/api";
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -19,8 +18,8 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        "https://e-backend-y0rv.onrender.com/api/v1/category/create-category",
+      const { data } = await api.post(
+        "/api/v1/category/create-category",
         { name },
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
@@ -40,9 +39,7 @@ const CreateCategory = () => {
   // Get all categories
   const getAllCategories = async () => {
     try {
-      const { data } = await axios.get(
-        "https://e-backend-y0rv.onrender.com/api/v1/category/get-category"
-      );
+      const { data } = await api.get("/api/v1/category/get-category");
       if (data?.success) {
         setCategories(data.category);
       }
@@ -60,8 +57,8 @@ const CreateCategory = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(
-        `https://e-backend-y0rv.onrender.com/api/v1/category/update-category/${selected._id}`,
+      const { data } = await api.put(
+        `/api/v1/category/update-category/${selected._id}`,
         { name: updateName },
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
@@ -82,8 +79,8 @@ const CreateCategory = () => {
   // Handle Delete  category
   const handleDelete = async (pid) => {
     try {
-      const { data } = await axios.delete(
-        `https://e-backend-y0rv.onrender.com/api/v1/category/delete-catergory/${pid}`,
+      const { data } = await api.delete(
+        `/api/v1/category/delete-catergory/${pid}`,
         { headers: { Authorization: `Bearer ${auth?.token}` } }
       );
       if (data.success) {
