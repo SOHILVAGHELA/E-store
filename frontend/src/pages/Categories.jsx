@@ -1,5 +1,5 @@
 import Layout from "../components/Layout/Layout";
-import Link from "antd/es/typography/Link";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useCategory from "../hooks/useCategory";
 const Categories = () => {

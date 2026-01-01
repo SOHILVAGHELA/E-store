@@ -6,12 +6,14 @@ import { useCart } from "../context/Cart";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import api from "../utils/api";
+import Loader from "./Loader";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
@@ -19,14 +21,17 @@ const HomePage = () => {
 
   // Get all products
   const getAllProducts = async () => {
+    setLoading(true);
     try {
       const { data } = await api.get(`/api/v1/product/get-product`);
 
       if (data?.success) {
         setProducts(data.products);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
       toast.error("Error while getting products");
     }
   };
@@ -125,53 +130,54 @@ const HomePage = () => {
           </div>
           <div className="col-sm">
             <h2 className="h4">All Products</h2>
-            <div className="d-flex flex-wrap gap-3">
-              {products?.map((p) => (
-                <div key={p._id}>
-                  <div
-                    key={p._id}
-                    className="card h-100"
-                    style={{ width: "16.65rem" }}
-                  >
-                    <img
-                      src={`${API_URL}/api/v1/product/product-photo/${p._id}`}
-                      className="card-img-top product-img"
-                      alt={p.name}
-                    />
-                    <div className="card-body p-2">
-                      <h5 className="card-title">{p.name}</h5>
-                      <p className="card-text small text-muted">
-                        {p.description.substring(0, 30)}...
-                      </p>
-                      <p className="card-text">${p.price}</p>
-                      <div className="d-flex justify-content-between">
-                        <button
-                          className="btn btn-sm btn-primary"
-                          onClick={() => navigate(`/product/${p.slug}`)}
-                        >
-                          See more
-                        </button>
+            <div className="d-flex flex-wrap justify-content-center gap-3">
+              {loading ? (
+                <Loader />
+              ) : (
+                products?.map((p) => (
+                  <div key={p._id}>
+                    <div
+                      key={p._id}
+                      className="card h-100"
+                      style={{ width: "16.65rem" }}
+                    >
+                      <img
+                        src={`${API_URL}/api/v1/product/product-photo/${p._id}`}
+                        className="card-img-top product-img"
+                        alt={p.name}
+                      />
+                      <div className="card-body p-2">
+                        <h5 className="card-title">{p.name}</h5>
+                        <p className="card-text small text-muted">
+                          {p.description.substring(0, 30)}...
+                        </p>
+                        <p className="card-text">${p.price}</p>
+                        <div className="d-flex justify-content-between">
+                          <button
+                            className="btn btn-sm btn-primary"
+                            onClick={() => navigate(`/product/${p.slug}`)}
+                          >
+                            See more
+                          </button>
 
-                        <button
-                          className="btn btn-sm btn-secondary"
-                          onClick={() => {
-                            setCart([...cart, p]);
-                            localStorage.setItem(
-                              "cart",
-                              JSON.stringify([...cart, p])
-                            );
-                            toast.success("Item Added to cart");
-                          }}
-                        >
-                          Add
-                        </button>
+                          <button
+                            className="btn btn-sm btn-secondary"
+                            onClick={() => {
+                              setCart([...cart, p]);
+                              localStorage.setItem(
+                                "cart",
+                                JSON.stringify([...cart, p])
+                              );
+                              toast.success("Item Added to cart");
+                            }}
+                          >
+                            Add
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-              {products.length == 0 && (
-                <>No Product available for this cateogry or price</>
+                ))
               )}
             </div>
           </div>

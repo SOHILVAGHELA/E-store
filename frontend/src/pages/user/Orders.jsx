@@ -10,7 +10,9 @@ const Orders = () => {
               <UserManu></UserManu>
             </div>
             <div className="col-md-9">
-              <h1>All Orders</h1>
+              <div className="card w-75 p-3">
+                <h1>All Orders</h1>
+              </div>
             </div>
           </div>
         </section>
